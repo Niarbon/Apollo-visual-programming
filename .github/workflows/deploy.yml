@@ -1,0 +1,44 @@
+name: Build and Deploy TurboWarp Platform
+
+# 触发条件：当 main 分支有代码推送（包括你或同学提交的代码）时触发
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. 下载仓库代码
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      # 2. 安装 Node.js 环境
+      - name: Set up Node.js
+        uses: actions/io-setup-node@v4
+        with:
+          node-version: 18
+
+      # 3. 安装依赖（利用 workspace 自动联动）
+      - name: Install Dependencies
+        run: npm install
+
+      # 4. 编译底层积木逻辑 (VM)
+      - name: Build Scratch VM
+        run: npm run build --workspace=scratch-vm
+
+      # 5. 编译前端界面 (GUI)
+      - name: Build Scratch GUI
+        run: npm run build --workspace=scratch-gui
+
+      # 6. 将编译好的静态网页（build目录）发布到 gh-pages 分支
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: scratch-gui/build # TurboWarp 编译产物的默认输出路径
+          branch: gh-pages # 专门用来存网页静态文件的分支
