@@ -20,7 +20,7 @@ jobs:
 
       # 2. 安装 Node.js 环境
       - name: Set up Node.js
-        uses: actions/io-setup-node@v4
+        uses: actions/setup-node@v4
         with:
           node-version: 18
 
