@@ -1,0 +1,8 @@
+{
+  "name": "apollo-scratch-platform",
+  "private": true,
+  "workspaces": [
+    "scratch-vm",
+    "scratch-gui"
+  ]
+}

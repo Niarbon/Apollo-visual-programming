@@ -1,0 +1,7 @@
+node_modules/
+scratch-gui/build/
+scratch-gui/node_modules/
+scratch-vm/node_modules/
+scratch-vm/build/
+scratch-vm/dist/
+.DS_Store
