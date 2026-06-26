@@ -33,7 +33,7 @@ jobs:
         working-directory: scratch-vm
         run: |
           npm run build -- --stats-error-details
-        run: npm run build --workspace=scratch-vm
+          npm run build --workspace=scratch-vm
 
       # 5. 编译前端界面 (GUI)
       - name: Build Scratch GUI
