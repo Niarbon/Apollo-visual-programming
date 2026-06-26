@@ -30,16 +30,19 @@ jobs:
 
       # 4. 编译底层积木逻辑 (VM)
       - name: Build Scratch VM
-        working-directory: scratch-vm
-        run: |
-          npm run build -- --stats-error-details
-          npm run build --workspace=scratch-vm
+        run: npm run build --workspace=scratch-vm
 
-      # 5. 编译前端界面 (GUI)
+      # 5. 生成缺失的 microbit 文件（GUI 构建需要）
+      - name: Generate missing files for scratch-gui
+        run: |
+          mkdir -p scratch-gui/src/generated
+          echo "module.exports = '';" > scratch-gui/src/generated/microbit-hex-url.cjs
+
+      # 6. 编译前端界面 (GUI)
       - name: Build Scratch GUI
         run: npm run build --workspace=scratch-gui
 
-      # 6. 将编译好的静态网页（build目录）发布到 gh-pages 分支
+      # 7. 将编译好的静态网页（build目录）发布到 gh-pages 分支
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
