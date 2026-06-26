@@ -125,11 +125,17 @@ module.exports = [
                 from: 'node_modules/scratch-blocks/media',
                 to: 'media'
             }, {
-                from: 'node_modules/scratch-storage/dist/web'
+                from: 'node_modules/scratch-storage/dist/web',
+                to: 'web/dist',
+                noErrorOnMissing: true
             }, {
-                from: 'node_modules/scratch-render/dist/web'
+                from: 'node_modules/scratch-render/dist/web',
+                to: 'web/dist',
+                noErrorOnMissing: true
             }, {
-                from: 'node_modules/@turbowarp/scratch-svg-renderer/dist/web'
+                from: 'node_modules/@turbowarp/scratch-svg-renderer/dist/web',
+                to: 'web/dist',
+                noErrorOnMissing: true
             }, {
                 from: 'src/playground'
             }])
