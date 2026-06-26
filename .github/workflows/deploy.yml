@@ -30,6 +30,9 @@ jobs:
 
       # 4. 编译底层积木逻辑 (VM)
       - name: Build Scratch VM
+        working-directory: scratch-vm
+        run: |
+          npm run build -- --stats-error-details
         run: npm run build --workspace=scratch-vm
 
       # 5. 编译前端界面 (GUI)
