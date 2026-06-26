@@ -259,7 +259,7 @@ module.exports = [
                 filename: 'js/[name].js',
                 chunkFilename: 'js/[name].js',
                 path: path.resolve('dist'),
-                publicPath: `${STATIC_PATH}/`
+                publicPath: `./`
             },
             externals: {
                 'react': 'react',
