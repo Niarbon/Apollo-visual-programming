@@ -118,11 +118,13 @@ const base = {
             patterns: [
                 {
                     from: 'node_modules/scratch-blocks/media',
-                    to: 'static/blocks-media/default'
+                    to: 'static/blocks-media/default',
+                    noErrorOnMissing: true
                 },
                 {
                     from: 'node_modules/scratch-blocks/media',
-                    to: 'static/blocks-media/high-contrast'
+                    to: 'static/blocks-media/high-contrast',
+                    noErrorOnMissing: true
                 },
                 {
                     from: 'src/lib/themes/blocks/high-contrast-media/blocks-media',
