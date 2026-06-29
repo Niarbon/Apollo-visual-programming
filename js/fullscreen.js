@@ -47152,11 +47152,28 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _generated_translations_json__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./generated-translations.json */ "./src/lib/tw-translations/generated-translations.json");
 var _generated_translations_json__WEBPACK_IMPORTED_MODULE_0___namespace = /*#__PURE__*/__webpack_require__.t(/*! ./generated-translations.json */ "./src/lib/tw-translations/generated-translations.json", 1);
 
+
+// Project-owned overrides for keys that upstream scratch-l10n leaves untranslated.
+// Keyed by lowercased locale. These are applied last so they always win.
+const additionalTranslations = {
+  'zh-cn': {
+    'gui.menuBar.settings': '设置',
+    'gui.menuBar.language': '语言'
+  },
+  'zh-tw': {
+    'gui.menuBar.settings': '設定',
+    'gui.menuBar.language': '語言'
+  }
+};
 const addAdditionalTranslations = editorMessages => {
   for (const locale of Object.keys(editorMessages)) {
     const toMixIn = _generated_translations_json__WEBPACK_IMPORTED_MODULE_0__[locale.toLowerCase()];
     if (toMixIn) {
       Object.assign(editorMessages[locale], toMixIn);
+    }
+    const overrides = additionalTranslations[locale.toLowerCase()];
+    if (overrides) {
+      Object.assign(editorMessages[locale], overrides);
     }
   }
 
